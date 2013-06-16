@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    
+    <body>
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
+        
+        <script>
+            
+            var Picture = Backbone.Model.extend({});
+            var Album = Backbone.Collection.extend({
+                model: Picture
+            });
+            
+            var dogPicture = new Picture();
+            var catPicture = new Picture();
+            var birdPicture = new Picture();
+            
+            var album = new Album();
+            album.add(dogPicture);
+            album.add(catPicture);
+            album.add(birdPicture);
+            
+            album.models[0].set("name", "dog");
+            album.models[1].set("description", "Dancing " + album.models[0].get("name"));
+            album.models[2].clear();
+            
+            console.log(album.toJSON());
+
+        </script>
+        
+    </body>
+
+</html>

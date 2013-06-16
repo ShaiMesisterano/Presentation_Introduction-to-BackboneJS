@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <title>Intoduction to Backbone.js</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=1024, user-scalable=no">
+        <link rel="stylesheet" href="./deckjs/core/deck.core.css">
+        <link rel="stylesheet" href="./deckjs/extensions/goto/deck.goto.css">
+        <link rel="stylesheet" href="./deckjs/extensions/menu/deck.menu.css">
+        <link rel="stylesheet" href="./deckjs/extensions/navigation/deck.navigation.css">
+        <link rel="stylesheet" href="./deckjs/extensions/hash/deck.hash.css">
+        <link rel="stylesheet" href="./deckjs/extensions/scale/deck.scale.css">
+        <link rel="stylesheet" href="./deckjs/themes/style/web-2.0.css">
+        <link rel="stylesheet" href="./deckjs/themes/transition/horizontal-slide.css">
+        <style>
+            .deck-container table{width: 100%}
+            .deck-container td,.deck-container th{border-bottom: solid 2px darkgray; padding: 3px}
+        </style>
+        <script src="./deckjs/modernizr.custom.js"></script>
+    </head>
+    
+    <body class="deck-container">
+        <div class="iscoWatermark">
+            <div class="left"></div>
+            <div class="right"></div>
+        </div>
+        <section class="slide intro">
+            <h1>Introduction to Backbone.js</h1>
+        </section>
+        <section class="slide">
+            <h1>Shai Mesisterano
+                <div class="subtitle">Web Developer</div>
+                <div class="subtitle small">
+                    <a href="http://www.mcterano.com/blog" target="_blank">"קוד נקי"
+                        <br />בלוג למפתחי ווב</a>
+                </div>
+            </h1>
+        </section>
+        <section class="slide">
+            <h2>What we're going to do today?</h2>
+            <pre>
+                var plan = {
+                    part1: "Single Page Applications",
+                    part2: "Backbone's Architecture",
+                    part3: "Models",
+                    part4: "Collections",
+                    part5: "Views"
+                }
+                
+                var qa = (time > 0) ? shoot() : sorry();
+            </pre>
+        </section>
+        <section class="slide">
+            <h2>Part 1</h2>
+            <h1>Single Page Applications</h1>
+        </section>
+        <section class="slide">
+            <h2>The old way...</h2>
+            <ul>
+                <li class="slide">Mixes up Logic & The DOM.</li>
+                <li class="slide">Ends up with spaghetti code.</li>
+                <li class="slide">Results with:</li>
+            </ul>
+        </section>
+        <section class="slide">
+            <h2>
+                Poor code
+            </h2>
+            <img src="assets/images/poor.jpg">
+        </section>
+        <section class="slide">
+            <h2>
+                Buggy code
+            </h2>
+            <img src="assets/images/bug.jpg">
+        </section>
+        
+        <section class="slide">
+            <h2>Part 2</h2>
+            <h1>Backbone's architecture</h1>
+        </section>
+        <section class="slide">
+            <h2>How to find...</h2>
+            <img src="assets/images/colors.jpg">
+        </section>
+        <section class="slide">
+            <h2>Features</h2>
+            <ul>
+                <li class="slide">MV(C) structure.
+                    <ul>
+                        <li class="slide">Client-side app structure.</li>
+                        <li class="slide">Seperation of concerns.</li>
+                        <li class="slide">Keeping it DRY.</li>
+                    </ul>
+                </li>
+                <li class="slide">Lazy Rendering.
+                    <ul>
+                        <li class="slide">Fast response.</li>
+                        <li class="slide">A better user experience.</li>
+                        <li class="slide">Happy users - more money!</li>
+                    </ul>
+                </li>
+                <li class="slide">Templates.
+                    <ul>
+                        <li class="slide">Less HTML.</li>
+                        <li class="slide">Less DOM manipulation.</li>
+                        <li class="slide">Less programming work.</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        <section class="slide">
+            <h2>Dependencies</h2>
+            <ul>
+                <li class="slide">Underscore.js
+                    <ul>
+                        <li>Data queries.</li>
+                        <li>Templates library.</li>
+                        <li>A replacement for ugly loops.</li>
+                    </ul>
+                </li>
+                <li class="slide">jQuery</li>
+            </ul>
+        </section>
+        <section class="slide">
+            <h2>Examples of Backbone.js</h2>
+            <ul>
+                <li>
+                    <a href="http://www.mcterano.com/BroadbandRace/" target="_blank">Cars Race.</a>
+                </li>
+                <li>
+                    <a href="http://jsfiddle.net/mcterano/akrqC/embedded/result/" target="_blank">Brick Game.</a>
+                </li>
+            </ul>
+        </section>
+        <section class="slide">
+            <h2>Part 3</h2>
+            <h1>Backbone.Model</h1>
+        </section>
+        <section class="slide">
+            <h2>What is a model?</h2>
+            <ul>
+                <li class="slide">Set of properties.</li>
+                <li class="slide">Represents data.</li>
+                <li class="slide">Like a row in table:
+                    <table>
+                        <tr>
+                            <th>ID</th>
+                            <th>Source</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>images/dog.jpeg</td>
+                            <td>Dog</td>
+                        </tr>
+                    </table>
+                </li>
+                <li class="slide">Alternative form:
+                        <ul>
+                            <li><u>ID:</u> 1</li>
+                            <li><u>Source:</u> images/dog.jpeg</li>
+                            <li><u>Description:</u> Dog</li>
+                        </ul>
+                </li>
+            </ul>
+        </section>
+        <section class="slide">
+            <h2>CRUD</h2>
+            <ul>
+                <li>
+                    <code>C</code>reate.</li>
+                <li>
+                    <code>R</code>ead.</li>
+                <li>
+                    <code>U</code>pdate.</li>
+                <li>
+                    <code>D</code>elete.</li>
+            </ul>
+        </section>
+        <section class="slide">
+            <h2>How to
+                <code>C</code>reate a model?</h2>
+            <ul>
+                <li class="class">Instantiate.</li>
+                <li class="slide">
+                    <code>defaults </code>property (optional).</li>
+            </ul>
+        </section>
+        <section class="slide">
+            <h2>What can we do with a model?</h2>
+            <ul>
+                <li class="slide">
+                    <code>R</code>ead it:
+                    <code>toJSON</code>
+                </li>
+                <li class="slide">
+                    <code>R</code>ead its field:
+                    <code>get</code>
+                </li>
+                <li class="slide">
+                    <code>U</code>pdate its field:
+                    <code>set</code>
+                </li>
+                <li class="slide">
+                    <code>D</code>elete it:
+                    <code>clear</code>
+                </li>
+                <li class="slide">Listen to its events:
+                    <code>on</code>
+                </li>
+            </ul>
+        </section>
+        <section class="slide">
+            <h2>Part 4</h2>
+            <h1 style="font-size: 3.8em">Backbone.Collection</h1>
+        </section>
+        <section class="slide">
+            <h2>What is a collection?</h2>
+            <ul>
+                <li class="slide">A replacement for group of models.
+                <li class="slide">Like a table:
+                    <table>
+                        <tr>
+                            <th>ID</th>
+                            <th>Source</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>images/dog.jpg</td>
+                            <td>Dog</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>images/cat.jpg</td>
+                            <td>Cat</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>images/monkey.jpg</td>
+                            <td>Monkey</td>
+                        </tr>
+                    </table>
+                </li>
+            </ul>
+        </section>
+        
+        <section class="slide">
+            <h1>Model vs. Collection</h1>
+        </section>
+        <section class="slide">
+            <h2>Model</h2>
+            <img src="assets/images/picture.jpg">
+        </section>
+        <section class="slide">
+            <h2>Collection</h2>
+            <img src="assets/images/album.jpg">
+        </section>
+        
+        <section class="slide">
+            <h2>Model</h2>
+            <img src="assets/images/key.jpg">
+        </section>
+        <section class="slide">
+            <h2>Collection</h2>
+            <img src="assets/images/keyboard.jpg">
+        </section>
+        
+        <section class="slide">
+            <h2>Model</h2>
+            <img src="assets/images/car.jpg">
+        </section>
+        <section class="slide">
+            <h2>Collection</h2>
+            <img src="assets/images/smiley.png" style="position: absolute">
+            <img src="assets/images/traffic_jam.jpg">
+        </section>
+        
+        <section class="slide">
+            <h2>How to
+                <code>C</code>reate a collection?</h2>
+            <ul>
+                <li class="class">Instantiate.</li>
+                <li class="slide">
+                    <code>model </code>property.</li>
+            </ul>
+        </section>
+        <section class="slide">
+            <h2>What can we do with a collection?</h2>
+            <ul>
+                <li class="slide">
+                    <code>R</code>ead it:
+                    <code>toJSON</code>
+                </li>
+                <li class="slide">Listen to its events:
+                    <code>on</code>
+                </li>
+            </ul>
+        </section>
+        <section class="slide">
+            <h2>What can we do with a model inside a collection?</h2>
+            <ul>
+                <li class="slide">
+                    <code>C</code>reate it:
+                    <code>
+                        <u>add</u>
+                   </code>
+                </li>
+                <li class="slide">
+                    <code>R</code>ead it:
+                    <code>get</code>
+                </li>
+                <li class="slide">
+                    <code>U</code>pdate it:
+                    <code>set</code>
+                </li>
+                <li class="slide">
+                    <code>D</code>elete it:
+                    <code>
+                        <u>clear</u>
+                    </code>
+                </li>
+                <li class="slide">Iterate through it
+                    <code>each</code>
+                </li>
+            </ul>
+        </section>
+        <section class="slide">
+            <h2>Part 5</h2>
+            <h1>Views</h1>
+        </section>
+        <section class="slide">
+            <h2>What is a view?</h2>
+            <ul>
+                <li class="slide">What we see.</li>
+                <li class="slide">Hooks up models to the DOM.</li>
+                <li class="slide">No Logic inside!</li>
+            </ul>
+        </section>
+        <section class="slide">
+            <h2>How to
+                <code>C</code>reate a view?</h2>
+            <ul>
+                <li class="class">Instantiate.</li>
+                <li class="slide">
+                    <code>el </code>and
+                    <code> tagName </code>property.</li>
+                <li class="slide">
+                    <code>id </code>property.</li>
+                <li class="slide">
+                    <code>className </code>property.</li>
+            </ul>
+        </section>
+        <section class="slide">
+            <h2>What can we do with a view?</h2>
+            <ul>
+                <li class="slide">Render its element (
+                    <code>this.$el</code>):
+                    <code> render</code>
+                </li>
+                <li class="slide">
+                    <code>D</code>elete it:
+                    <code>
+                        <u> remove</u>
+                    </code>
+                </li>
+            </ul>
+        </section>
+        <section class="slide">
+            <h2>How can we catch events inside a view?</h2>
+            <ul>
+                <li class="slide">
+                    <code>click</code>
+                </li>
+                <li class="slide">
+                    <code>dblclick</code>
+                </li>
+                <li class="slide">
+                    <code>mouseenter</code>
+                </li>
+                <li class="slide">
+                    <code>mouseleave</code>
+                </li>
+                <li class="slide">
+                    <code>...</code>
+                </li>
+            </ul>
+        </section>
+        <section class="slide">
+            <h2>Still to come...</h2>
+            <ul>
+                <li class="slide">HTML templates.</li>
+                <li class="slide">Synchronize data from/to server.</li>
+                <li class="slide">RESTify our application.</li>
+            </ul>
+        </section>
+        <section class="slide">
+            <h1>That's it for now...</h1>
+        </section>
+        <!-- deck.navigation snippet -->
+        <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+        <a href="#" class="deck-next-link" title="Next">&#8594;</a>
+        <!-- deck.goto snippet -->
+        <form action="../" method="get" class="goto-form">
+            <label for="goto-slide">Go to slide:</label>
+            <input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+            <datalist id="goto-datalist"></datalist>
+            <input type="submit" value="Go">
+        </form>
+        <!-- deck.hash snippet -->
+        <a href="../" title="Permalink to this slide" class="deck-permalink">#</a>
+        <div id="clock" style="position: fixed; bottom: 0; left: 0; z-index: 99; font-size: 12px">
+            <span id="clock-time"></span>
+            <a id="toggle-clock"></a>
+        </div>
+        <!-- End extension snippets. -->
+        <div id="backbone" style="position: fixed; top: 10px; right: 30px; z-index: 99">
+            <img src="assets/images/backbone.png">
+        </div>
+        <div id="copyright" style="position: fixed; bottom: 0; right: 0; z-index: 99; font-size: 12px">
+            All Rights Reserved &copy; <a href="http://www.mcterano.com" target="_blank">Shai Mesisterano</a>
+        </div>
+        <script src="./deckjs/jquery-1.7.2.min.js"></script>
+        <script src="./deckjs/core/deck.core.js"></script>
+        <script src="./deckjs/extensions/hash/deck.hash.js"></script>
+        <script src="./deckjs/extensions/menu/deck.menu.js"></script>
+        <script src="./deckjs/extensions/goto/deck.goto.js"></script>
+        <script src="./deckjs/extensions/status/deck.status.js"></script>
+        <script src="./deckjs/extensions/navigation/deck.navigation.js"></script>
+        <script src="./deckjs/extensions/scale/deck.scale.js"></script>
+        <script src="./deckjs/plugins/clock/deck.clock.js"></script>
+        <script>
+            $(document).ready(function() {
+                $.deck('.slide', {
+                    clock: {
+                        enable: true
+                    }
+                });
+            });
+        </script>
+    </body>
+
+</html>
